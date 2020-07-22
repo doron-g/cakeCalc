@@ -2,10 +2,6 @@ document.getElementById("cakeMe").addEventListener("click", calcCake);
 
 function calcCake(){
 
-
-
-
-
 const size = document.getElementById('size').value
 const height = document.getElementById('height').value
 const amount = document.getElementById('amount').value
