@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
 	<title>Dorons Cakes Calc</title>
+
 	<style>
 		input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -21,9 +22,29 @@ body {
 </head>
 <body>
 
-	<h1>תמלאו את הפרטים</h1>
-<div>
+	<h1>המרות בין תבניות</h1>
+
+<form>
     <h2>תבנית מקורית</h2>
+    <label>
+        <input type="radio" name="tavnitType" value="circle">
+        תבנית עגולה
+    </label>
+     <label>
+        <input type="radio" name="tavnitType" value="rectangle">
+        תבנית מלבנית
+    </label>
+     <label>
+        <input type="radio" name="tavnitType" value="squre">
+        תבנית מרובעת
+    </label>
+
+
+</form>
+
+
+<div>
+
   <label for="size">קוטר תבנית:</label>
   <input type="number" id="size" name="size" placeholder="קוטר התבנית במתכון המקורי"><br><br>
   <label for="height">גובה :</label>
@@ -33,8 +54,25 @@ body {
 
 </div>
 
+<form>
+     <h2>תבנית חדשה</h2>
+    <label>
+        <input type="radio" name="tavnitType" value="circle">
+        תבנית עגולה
+    </label>
+     <label>
+        <input type="radio" name="tavnitType" value="rectangle">
+        תבנית מלבנית
+    </label>
+     <label>
+        <input type="radio" name="tavnitType" value="squre">
+        תבנית מרובעת
+    </label>
+
+
+</form>
 <div>
-    <h2>תבנית חדשה</h2>
+
   <label for="newSize">קוטר תבנית:</label>
   <input type="number" id="newSize" name="newSize" placeholder="קוטר התבנית החדשה"><br><br>
   <label for="newHeight">גובה :</label>
