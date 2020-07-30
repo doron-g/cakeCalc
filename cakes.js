@@ -1,6 +1,5 @@
 document.getElementById("cakeMe").addEventListener("click", calcCake);
-//document.getElementsByName("formaType").addEventListener("click", changeForma(this))
-document.getElementsByClassName("input_elem").hidden = true
+
 
 function calcCake(){
 
@@ -29,16 +28,14 @@ const ratio = newCakes / cakes
  alert (ratio);
 }
 
-function changeForma(elem){
-    document.getElementsByClassName("input_elem").hidden = true
-    if (elem == document.getElementById("round")) {
-         document.getElementsByClassName("round").hidden = false
-    }
-    else if (elem == document.getElementById("square")) {
-        //shows square forma
-    }
-    else  {
-        //shows malben forma
+function changeForma(cakeType){
+    const elems = document.getElementsByClassName("input_elem");
+    for(i=0; i<elems.length; i++){
+    const elem = elems[i];
+     if(elem.classList.contains(cakeType)){
+          elem.style.visibility="visible";
+        } else {
+            elem.style.visibility="hidden";
+        }
     }
 }
-
