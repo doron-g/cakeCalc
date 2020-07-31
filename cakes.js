@@ -61,9 +61,9 @@ function changeForma(cakeType){
     for(i=0; i<elems.length; i++){
     const elem = elems[i];
      if(elem.classList.contains(cakeType)){
-          elem.style.visibility="visible";
+          elem.style.display="block";
         } else {
-            elem.style.visibility="hidden";
+            elem.style.display="none";
         }
     }
 }
@@ -74,9 +74,9 @@ function newChangeForma(cakeType){
     for(i=0; i<newElems.length; i++){
     const newElem = newElems[i];
      if(newElem.classList.contains(cakeType)){
-          newElem.style.visibility="visible";
+          newElem.style.display="block";
         } else {
-            newElem.style.visibility="hidden";
+            newElem.style.display="none";
         }
     }
 }
