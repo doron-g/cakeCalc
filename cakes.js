@@ -15,19 +15,19 @@ const square_edge = document.getElementById('square_edge').value
 const height = document.getElementById('height').value
 const amount = document.getElementById('amount').value
 
-const newdiameter = document.getElementById('newdiameter').value
-const newlength = document.getElementById('newlength').value
-const newwidth = document.getElementById('newwidth').value
-const newsquare_edge = document.getElementById('newsquare_edge').value
-const newheight = document.getElementById('newheight').value
-const newamount = document.getElementById('newamount').value
+const newDiameter = document.getElementById('newDiameter').value
+const newLength = document.getElementById('newLength').value
+const newWidth = document.getElementById('newWidth').value
+const newSquare_edge = document.getElementById('newSquare_edge').value
+const newHeight = document.getElementById('newHeight').value
+const newAmount = document.getElementById('newAmount').value
 
 const round_cake  = diameter/2 * diameter/2 * height * Math.PI * amount
 const rectangle_cake = length * width * height * amount
 const square_cake = square_edge * square_edge * height * amount
-const new_round_cake = newdiameter/2 * newdiameter/2 * newheight * Math.PI * newamount
-const new_rectangle_cake = newlength * newwidth * newheight * newamount
-const new_square_cake = newsquare_edge * newsquare_edge * newheight * newamount
+const new_round_cake = newDiameter/2 * newDiameter/2 * newHeight * Math.PI * newAmount
+const new_rectangle_cake = newLength * newWidth * newHeight * newAmount
+const new_square_cake = newSquare_edge * newSquare_edge * newHeight * newAmount
 switch(originalCakeType){
 case "circle":
 originalCake = round_cake;
@@ -51,12 +51,8 @@ newCake = new_rectangle_cake;
 break;
 }
 
-
-
-
-
-const ratio = newCake / originalCake
- alert (ratio);
+const ratio = Math.round((newCake / originalCake)*100)/100
+ alert (ratio + "הכפילו את הכמות ב");
 }
 
 function changeForma(cakeType){
@@ -72,17 +68,15 @@ function changeForma(cakeType){
     }
 }
 
-function newchangeForma(cakeType){
+function newChangeForma(cakeType){
     newCakeType = cakeType
-    const newelems = document.getElementsByClassName("new_input_elem");
-    for(i=0; i<newelems.length; i++){
-    const newelem = newelems[i];
-     if(newelem.classList.contains(cakeType)){
-          newelem.style.visibility="visible";
+    const newElems = document.getElementsByClassName("new_input_elem");
+    for(i=0; i<newElems.length; i++){
+    const newElem = newElems[i];
+     if(newElem.classList.contains(cakeType)){
+          newElem.style.visibility="visible";
         } else {
-            newelem.style.visibility="hidden";
+            newElem.style.visibility="hidden";
         }
     }
 }
-
-

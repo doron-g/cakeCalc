@@ -77,74 +77,50 @@ body {
     </div>
 </form>
 
-<form id="newcake">
+<form id="newCake">
     <h2>תבנית חדשה</h2>
     <label>
-        <input type="radio" id="newround" name="newformaType" value="circle" onclick="newchangeForma('circle')">
+        <input type="radio" id="newDiameter" name="newFormaType" value="circle" onclick="newChangeForma('circle')">
         תבנית עגולה
     </label>
     <label>
-        <input type="radio" id="newrectangle" name="newformaType" value="rectangle" onclick="newchangeForma('rectangle')">
+        <input type="radio" id="newRectangle" name="newFormaType" value="rectangle" onclick="newChangeForma('rectangle')">
         תבנית מלבנית
     </label>
     <label>
-        <input type="radio" id="newsquare" name="newformaType" value="square" onclick="newchangeForma('square')">
+        <input type="radio" id="newSquare" name="newFormaType" value="square" onclick="newChangeForma('square')">
         תבנית מרובעת
     </label>
-<!--
-<form>
-    <h2>תבנית חדשה</h2>
-    <label>
-        <input type="radio" name="tavnitType" value="circle">
-        תבנית עגולה
-    </label>
-    <label>
-        <input type="radio" name="tavnitType" value="rectangle">
-        תבנית מלבנית
-    </label>
-    <label>
-        <input type="radio" name="tavnitType" value="square">
-        תבנית מרובעת
-    </label>-->
-
-
 
 <div>
 
     <div class="form_inputs">
 
         <div class="new_input_elem circle">
-            <label for="newdiameter">קוטר תבנית:</label>
-            <input type="number" id="newdiameter" name="newdiameter" placeholder="קוטר התבנית במתכון חדש"><br><br>
+            <label for="newDiameter">קוטר תבנית:</label>
+            <input type="number" id="newDiameter" name="newDiameter" placeholder="קוטר התבנית במתכון חדש"><br><br>
         </div>
         <div class="new_input_elem rectangle">
-            <label for="newlength">אורך צלע:</label>
-            <input type="number" id="newlength" name="newlength" placeholder="אורך צלע במתכון חדש"><br><br>
+            <label for="newLength">אורך צלע:</label>
+            <input type="number" id="newLength" name="newLength" placeholder="אורך צלע במתכון חדש"><br><br>
         </div>
         <div class="new_input_elem rectangle">
-            <label for="newwidth">רוחב צלע:</label>
-            <input type="number" id="newwidth" name="newwidth" placeholder="רוחב צלע במתכון חדש"><br><br>
+            <label for="newWidth">רוחב צלע:</label>
+            <input type="number" id="newWidth" name="newWidth" placeholder="רוחב צלע במתכון חדש"><br><br>
         </div>
         <div class="new_input_elem square">
-            <label  for="newsquare_edge">צלע ריבוע:</label>
-            <input  type="number" id="newsquare_edge" name="newsquare_edge"
+            <label  for="newSquare_edge">צלע ריבוע:</label>
+            <input  type="number" id="newSquare_edge" name="newSquare_edge"
                    placeholder="אורך צלע במתכון מקור"><br><br>
         </div>
-        <label for="newheight">גובה :</label>
-        <input type="number" id="newheight" name="newheight" placeholder="גובה התבנית במתכון חדש"><br><br>
-        <label for="newamount">מספר תבניות:</label>
-        <input type="number" id="newamount" name="newamount" placeholder="מספר התבניות במתכון חדש"><br><br>
-
+        <label for="newHeight">גובה :</label>
+        <input type="number" id="newHeight" name="newHeight" placeholder="גובה התבנית במתכון חדש"><br><br>
+        <label for="newAmount">מספר תבניות:</label>
+        <input type="number" id="newAmount" name="newAmount" placeholder="מספר התבניות במתכון חדש"><br><br>
     </div>
-
-
-
-
     <button id="cakeMe">חשב</button>
 </div>
     </form>
 <script src="cakes.js"></script>
 </body>
-
-
 </html>
