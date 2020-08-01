@@ -52,7 +52,9 @@ break;
 }
 
 const ratio = Math.round((newCake / originalCake)*100)/100
- alert (ratio + "הכפילו את הכמות ב");
+ document.getElementById("ratio").innerHTML = "יש להכפיל את הכמות ב" + ratio;
+ /*alert (ratio + "הכפילו את הכמות ב");*/
+
 }
 
 function changeForma(cakeType){
