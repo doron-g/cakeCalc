@@ -1,5 +1,10 @@
 document.getElementById("cakeMe").addEventListener("click", calcCake);
+document.querySelector('#cakeMe').addEventListener('click', function(event) {
+  event.preventDefault();
+});
+
 let originalCakeType
+
 let newCakeType
 
 
