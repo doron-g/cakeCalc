@@ -7,6 +7,7 @@
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <meta charset="utf-8">
+
     <title>Dorons Cakes Calc</title>
 
     <style>
@@ -22,7 +23,7 @@ input[type=number] {
 }
 body {
   direction: rtl;
-  margin-right: 50px
+  margin-right: 50px;
 }
 
 .input_elem {
@@ -41,6 +42,14 @@ body {
 <h1>המרות בין תבניות</h1>
 
 <form id="oldCake">
+
+    <ol>
+        <li>בחרו את סוג התבנית המקורית</li>
+        <li>הכניסו את הנתונים של גודל התבנית</li>
+        <li>בחרו את סוג התבנית החדשה</li>
+        <li>הכניסו את הנתונים של גודל התבנית</li>
+        <li>ליחצו על "חשב"</li>
+    </ol>
     <h2>תבנית מקורית</h2>
     <label>
         <input type="radio" id="round" name="formaType" value="circle" onclick="changeForma('circle')" >
@@ -60,28 +69,28 @@ body {
 
         <div class="input_elem circle col-xs-3">
             <label for="diameter">קוטר תבנית:</label>
-            <input type="number" id="diameter" name="diameter" placeholder="קוטר התבנית במתכון המקורי"><br><br>
+            <input type="number" id="diameter" name="diameter" placeholder="לדוגמא: 24"><br><br>
         </div>
         <div class="input_elem rectangle col-xs-3">
             <label for="length">אורך צלע:</label>
-            <input type="number" id="length" name="length" placeholder="אורך צלע במתכון מקור"><br><br>
+            <input type="number" id="length" name="length" placeholder="לדוגמא: 10"><br><br>
         </div>
         <div class="input_elem rectangle col-xs-3">
             <label for="width">רוחב צלע:</label>
-            <input type="number" id="width" name="width" placeholder="רוחב צלע במתכון מקור"><br><br>
+            <input type="number" id="width" name="width" placeholder="לדוגמא: 5"><br><br>
         </div>
         <div class="input_elem square col-xs-3">
             <label  for="square_edge">צלע ריבוע:</label>
             <input  type="number" id="square_edge" name="square_edge"
-                   placeholder="אורך צלע במתכון מקור"><br><br>
+                   placeholder="לדוגמא: 20"><br><br>
         </div>
         <div class="col-xs-3">
         <label for="height">גובה :</label>
-        <input type="number" id="height" name="height" placeholder="גובה התבנית במתכון המקורי"><br><br>
+        <input type="number" id="height" name="height" placeholder="לדוגמא: 5"><br><br>
         </div>
         <div class="col-xs-3">
         <label for="amount">מספר תבניות:</label>
-        <input type="number" id="amount" name="amount" placeholder="מספר התבניות במתכון המקורי"><br><br>
+        <input type="number" id="amount" name="amount" placeholder="לדוגמא: 1"><br><br>
         </div>
     </div>
 </form>
@@ -107,28 +116,28 @@ body {
 
         <div class="new_input_elem circle col-xs-3">
             <label for="newDiameter">קוטר תבנית:</label>
-            <input type="number" id="newDiameter" name="newDiameter" placeholder="קוטר התבנית במתכון חדש"><br><br>
+            <input type="number" id="newDiameter" name="newDiameter" placeholder="לדוגמא: 18"><br><br>
         </div>
         <div class="new_input_elem rectangle col-xs-3">
             <label for="newLength">אורך צלע:</label>
-            <input type="number" id="newLength" name="newLength" placeholder="אורך צלע במתכון חדש"><br><br>
+            <input type="number" id="newLength" name="newLength" placeholder="לדוגמא: 8"><br><br>
         </div>
         <div class="new_input_elem rectangle col-xs-3">
             <label for="newWidth">רוחב צלע:</label>
-            <input type="number" id="newWidth" name="newWidth" placeholder="רוחב צלע במתכון חדש"><br><br>
+            <input type="number" id="newWidth" name="newWidth" placeholder="לדוגמא: 4"><br><br>
         </div>
         <div class="new_input_elem square col-xs-3">
             <label  for="newSquare_edge">צלע ריבוע:</label>
             <input  type="number" id="newSquare_edge" name="newSquare_edge"
-                   placeholder="אורך צלע במתכון מקור"><br><br>
+                   placeholder="לדוגמא 15"><br><br>
         </div>
         <div class="col-xs-3">
         <label for="newHeight">גובה :</label>
-        <input type="number" id="newHeight" name="newHeight" placeholder="גובה התבנית במתכון חדש"><br><br>
+        <input type="number" id="newHeight" name="newHeight" placeholder="לדוגמא: 3"><br><br>
         </div>
         <div class="col-xs-3">
             <label for="newAmount">מספר תבניות:</label>
-        <input type="number" id="newAmount" name="newAmount" placeholder="מספר התבניות במתכון חדש"><br><br>
+        <input type="number" id="newAmount" name="newAmount" placeholder="לדוגמא: 2"><br><br>
         </div>
         </div>
     <button id="cakeMe" class="btn btn-primary">חשב</button>
