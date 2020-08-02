@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="whisk.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
@@ -44,9 +45,11 @@ body {
 ol {
   list-style-image: url('whisk.png');
 }
-input {
-    size:4;
-    maxlength:4;
+.number {
+    width: 85px;
+}
+input[type=number]{
+    width:85px;
 }
 
 
@@ -67,7 +70,7 @@ input {
     </ol>
     <h2>תבנית מקורית</h2>
     <label>
-        <input type="radio" id="round" name="formaType" value="circle" onclick="changeForma('circle')" >
+        <input type="radio" id="round" name="formaType" value="circle" onclick="changeForma('circle')">
         תבנית עגולה
     </label>
     <label>
@@ -88,24 +91,24 @@ input {
         </div>
         <div class="input_elem rectangle col-xs-3">
             <label for="length">אורך צלע:</label>
-            <input type="number" id="length" name="length" placeholder="לדוגמא: 10"><br><br>
+            <input  type="number" id="length" name="length" placeholder="לדוגמא: 10"><br><br>
         </div>
         <div class="input_elem rectangle col-xs-3">
             <label for="width">רוחב צלע:</label>
-            <input type="number" id="width" name="width" placeholder="לדוגמא: 5"><br><br>
+            <input  type="number" id="width" name="width" placeholder="לדוגמא: 5"><br><br>
         </div>
         <div class="input_elem square col-xs-3">
             <label  for="square_edge">צלע ריבוע:</label>
-            <input  type="number" id="square_edge" name="square_edge"
+            <input   type="number" id="square_edge" name="square_edge"
                    placeholder="לדוגמא: 20"><br><br>
         </div>
         <div class="col-xs-3">
         <label for="height">גובה :</label>
-        <input type="number" id="height" name="height" placeholder="לדוגמא: 5"><br><br>
+        <input  type="number" id="height" name="height" placeholder="לדוגמא: 5"><br><br>
         </div>
         <div class="col-xs-3">
         <label for="amount">מספר תבניות:</label>
-        <input type="number" id="amount" name="amount" placeholder="לדוגמא: 1"><br><br>
+        <input  type="number" id="amount" name="amount" placeholder="לדוגמא: 1"><br><br>
         </div>
     </div>
 </form>
@@ -131,15 +134,15 @@ input {
 
         <div class="new_input_elem circle col-xs-3">
             <label for="newDiameter">קוטר תבנית:</label>
-            <input type="number" id="newDiameter" name="newDiameter" placeholder="לדוגמא: 18"><br><br>
+            <input  type="number" id="newDiameter" name="newDiameter" placeholder="לדוגמא: 18"><br><br>
         </div>
         <div class="new_input_elem rectangle col-xs-3">
             <label for="newLength">אורך צלע:</label>
-            <input type="number" id="newLength" name="newLength" placeholder="לדוגמא: 8"><br><br>
+            <input  type="number" id="newLength" name="newLength" placeholder="לדוגמא: 8"><br><br>
         </div>
         <div class="new_input_elem rectangle col-xs-3">
             <label for="newWidth">רוחב צלע:</label>
-            <input type="number" id="newWidth" name="newWidth" placeholder="לדוגמא: 4"><br><br>
+            <input  type="number" id="newWidth" name="newWidth" placeholder="לדוגמא: 4"><br><br>
         </div>
         <div class="new_input_elem square col-xs-3">
             <label  for="newSquare_edge">צלע ריבוע:</label>
@@ -148,11 +151,11 @@ input {
         </div>
         <div class="col-xs-3">
         <label for="newHeight">גובה :</label>
-        <input type="number" id="newHeight" name="newHeight" placeholder="לדוגמא: 3"><br><br>
+        <input  type="number" id="newHeight" name="newHeight" placeholder="לדוגמא: 3"><br><br>
         </div>
         <div class="col-xs-3">
             <label for="newAmount">מספר תבניות:</label>
-        <input type="number" id="newAmount" name="newAmount" placeholder="לדוגמא: 2"><br><br>
+        <input  type="number" id="newAmount" name="newAmount" placeholder="לדוגמא: 2"><br><br>
         </div>
         </div>
     <button id="cakeMe" class="btn btn-primary">חשב</button>
