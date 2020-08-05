@@ -1,0 +1,15 @@
+{
+  "background_color": "purple",
+  "description": "cakes calculator",
+  "display": "fullscreen",
+  "icons": [
+    {
+      "src": "img/whisk.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "name": "cakes calculator",
+  "short_name": "CakeCalc",
+  "start_url": "/cakeCalc/index.html"
+}
