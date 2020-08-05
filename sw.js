@@ -7,6 +7,9 @@ self.addEventListener('install', function(e) {
        '/cakeCalc/img/inst16.png',
        '/cakeCalc/index.html',
        '/cakeCalc/index.js',
+       '/cakeCalc/img/whisk-icon.png'
+
+
 
 
      ]);
