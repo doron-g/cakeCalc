@@ -87,3 +87,8 @@ function newChangeForma(cakeType){
         }
     }
 }
+
+/*
+$(document).ready(function)(){
+    $(".toast").toast()
+}*/
