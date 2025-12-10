@@ -1,195 +1,579 @@
 <!DOCTYPE html>
-<html>
+<html lang="he" dir="rtl">
 <head>
-     <link rel="manifest" href="manifest.webmanifest">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="img/whisk.png">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css" integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If" crossorigin="anonymous">
-
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="manifest" href="manifest.webmanifest">
     <meta charset="utf-8">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-174153837-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-174153837-1');
-</script>
-
     <title>Dorons Cakes Calc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" href="img/whisk.png">
+
+    <!-- Bootstrap (אותה גרסה כמו אצלך, אפשר לשדרג בהמשך אם תרצה) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css"
+          integrity="sha384-vus3nQHTD+5mpDiZ4rkEPlnkcyTP+49BhJ4wJeJunw06ZAp+wzzeBPUXr42fi8If"
+          crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174153837-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-174153837-1');
+    </script>
+
+    <!-- פונט ישראלי נעים לקריאה -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <style>
-		input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
+        /* הסתרת חיצים בקלט מספרי */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
 
-input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
-}
-body {
-  direction: rtl;
-  margin-right: 50px;
-}
+        :root {
+            --bg-gradient: linear-gradient(135deg, #fff8fb, #ffe9e0);
+            --card-bg: #ffffff;
+            --accent: #f28ab2;
+            --accent-soft: rgba(242, 138, 178, 0.1);
+            --accent-strong: #e45d94;
+            --text-main: #333333;
+            --text-muted: #777777;
+            --border-soft: #f3d1df;
+            --radius-lg: 18px;
+        }
 
-.input_elem {
-   display:none;
-}
-.new_input_elem {
-     display:none;
-}
-ol {
-  list-style-image: url('img/whisk.png');
-}
-.number {
-    width: 85px;
-}
-input[type=number]{
-    width:85px;
-}
-#insta_button {
-  background-image: url('img/inst16.png');
-}
+        body {
+            direction: rtl;
+            font-family: 'Heebo', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            color: var(--text-main);
+        }
 
+        .app-wrapper {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 1080px;
+            padding: 28px 22px 24px;
+        }
 
+        @media (min-width: 768px) {
+            .app-wrapper {
+                padding: 32px 36px 28px;
+            }
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 12px;
+        }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-soft);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-icon img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .app-title {
+            margin: 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .app-subtitle {
+            margin: 2px 0 0;
+            font-size: 0.92rem;
+            color: var(--text-muted);
+        }
+
+        .step-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            padding: 14px 16px;
+            background: #fff7fb;
+            border-radius: 14px;
+            border: 1px dashed var(--border-soft);
+            margin-bottom: 22px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .step-number {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 600;
+            margin-left: 6px;
+        }
+
+        .forms-row {
+            margin-top: 8px;
+        }
+
+        .card-section {
+            background: #fefeff;
+            border-radius: 16px;
+            border: 1px solid #f2edf4;
+            padding: 18px 16px 14px;
+            height: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .card-section {
+                padding: 20px 20px 16px;
+            }
+        }
+
+        .card-section h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .card-section h2::before {
+            content: "";
+            width: 6px;
+            height: 18px;
+            border-radius: 999px;
+            background: var(--accent-soft);
+        }
+
+        .forma-types {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-bottom: 12px;
+        }
+
+        .forma-types label {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .forma-types input[type="radio"] {
+            margin-left: 4px;
+        }
+
+        .form_inputs {
+            margin-top: 6px;
+        }
+
+        .form-group-custom {
+            margin-bottom: 10px;
+        }
+
+        .form-group-custom label {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+            margin-bottom: 3px;
+        }
+
+        .form-control-custom {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #e8e2ee;
+            padding: 6px 9px;
+            font-size: 0.9rem;
+            transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+        }
+
+        .form-control-custom::placeholder {
+            color: #c0b8c6;
+            font-size: 0.86rem;
+        }
+
+        .form-control-custom:focus {
+            outline: none;
+            border-color: var(--accent-strong);
+            box-shadow: 0 0 0 2px rgba(228, 93, 148, 0.11);
+            background: #fffafc;
+        }
+
+        /* נשאיר את הכיתות המקוריות כדי שה-JS יעבוד,
+           אבל נשתמש בהן רק כ"מעטפה" סביב ה-input */
+        .input_elem,
+        .new_input_elem {
+            display: none; /* ברירת מחדל – JS ישנה את זה */
+        }
+
+        /* רוחב מלא במספרים, במקום 85px */
+        .input_elem input[type="number"],
+        .new_input_elem input[type="number"],
+        #height,
+        #amount,
+        #newHeight,
+        #newAmount {
+            width: 100%;
+        }
+
+        /* כפתורים */
+        .actions-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px;
+            margin-top: 14px;
+        }
+
+        #cakeMe {
+            border-radius: 999px;
+            border: none;
+            padding: 8px 22px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            background: var(--accent-strong);
+            box-shadow: 0 6px 18px rgba(228, 93, 148, 0.35);
+        }
+
+        #cakeMe:hover,
+        #cakeMe:focus {
+            background: #d74a87;
+        }
+
+        .add-button {
+            border-radius: 999px;
+            border: 1px solid #e4d7ea;
+            padding: 7px 18px;
+            font-size: 0.9rem;
+            background: #ffffff;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            background: #faf6ff;
+        }
+
+        #ratio {
+            margin-top: 12px;
+            padding: 10px 12px;
+            border-radius: 12px;
+            border: 1px dashed #e3d0dd;
+            background: #fff9fd;
+            font-size: 0.92rem;
+            min-height: 24px;
+        }
+
+        .social-row {
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 1px solid #f1e6f2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .social-icons img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .brand-signature {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .brand-signature span {
+            font-weight: 500;
+        }
+
+        /* רספונסיביות */
+        @media (max-width: 767.98px) {
+            .app-header {
+                align-items: flex-start;
+            }
+            .forms-row > [class*="col-"] {
+                margin-bottom: 12px;
+            }
+        }
     </style>
 </head>
 <body>
-<!--<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-autohide=false">
-  <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
-    <strong class="mr-auto">Bootstrap</strong>
-    <small>11 mins ago</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    Hello, world! This is a toast message.
-  </div>
-</div>-->
-<h1>המרות בין תבניות</h1>
 
-<form id="oldCake">
+<div class="app-wrapper">
+    <header class="app-header">
+        <div class="app-icon">
+            <img src="img/whisk.png" alt="Cake icon">
+        </div>
+        <div>
+            <h1 class="app-title">המרת גדלי תבניות לעוגות</h1>
+            <p class="app-subtitle">מחשבון נוח להתאמת כמויות מתבנית לתבנית</p>
+        </div>
+    </header>
 
-    <ol>
-        <li>בחרו את סוג התבנית המקורית</li>
-        <li>הכניסו את הנתונים של גודל התבנית</li>
-        <li>בחרו את סוג התבנית החדשה</li>
-        <li>הכניסו את הנתונים של גודל התבנית</li>
-        <li>ליחצו על "חשב"</li>
-    </ol>
-    <h2>תבנית מקורית</h2>
-    <label>
-        <input type="radio" id="round" name="formaType" value="circle" onclick="changeForma('circle')">
-        תבנית עגולה
-    </label>
-    <label>
-        <input type="radio" id="rectangle" name="formaType" value="rectangle" onclick="changeForma('rectangle')">
-        תבנית מלבנית
-    </label>
-    <label>
-        <input type="radio" id="square" name="formaType" value="square" onclick="changeForma('square')">
-        תבנית מרובעת
-    </label>
-
-
-    <div class="form_inputs row">
-
-        <div class="input_elem circle col-xs-3">
-            <label for="diameter">קוטר תבנית:</label>
-            <input type="number" id="diameter" name="diameter" placeholder="לדוגמא: 24"><br><br>
+    <!-- צעדים -->
+    <div class="step-list">
+        <div class="step">
+            <span class="step-number">1</span>
+            בחרו את סוג התבנית המקורית
         </div>
-        <div class="input_elem rectangle col-xs-3">
-            <label for="length">אורך צלע:</label>
-            <input  type="number" id="length" name="length" placeholder="לדוגמא: 10"><br><br>
+        <div class="step">
+            <span class="step-number">2</span>
+            הזינו את מידות התבנית המקורית
         </div>
-        <div class="input_elem rectangle col-xs-3">
-            <label for="width">רוחב צלע:</label>
-            <input  type="number" id="width" name="width" placeholder="לדוגמא: 5"><br><br>
+        <div class="step">
+            <span class="step-number">3</span>
+            בחרו את סוג התבנית החדשה
         </div>
-        <div class="input_elem square col-xs-3">
-            <label  for="square_edge">צלע ריבוע:</label>
-            <input   type="number" id="square_edge" name="square_edge"
-                   placeholder="לדוגמא: 20"><br><br>
+        <div class="step">
+            <span class="step-number">4</span>
+            הזינו את מידות התבנית החדשה
         </div>
-        <div class="col-xs-3">
-        <label for="height">גובה :</label>
-        <input  type="number" id="height" name="height" placeholder="לדוגמא: 5"><br><br>
-        </div>
-        <div class="col-xs-3">
-        <label for="amount">מספר תבניות:</label>
-        <input  type="number" id="amount" name="amount" placeholder="לדוגמא: 1"><br><br>
+        <div class="step">
+            <span class="step-number">5</span>
+            לחצו על "חשב" לקבלת היחס
         </div>
     </div>
-</form>
 
-<form id="newCake">
-    <h2>תבנית חדשה</h2>
-    <label>
-        <input type="radio" id="newRound" name="newFormaType" value="circle" onclick="newChangeForma('circle')">
-        תבנית עגולה
-    </label>
-    <label>
-        <input type="radio" id="newRectangle" name="newFormaType" value="rectangle" onclick="newChangeForma('rectangle')">
-        תבנית מלבנית
-    </label>
-    <label>
-        <input type="radio" id="newSquare" name="newFormaType" value="square" onclick="newChangeForma('square')">
-        תבנית מרובעת
-    </label>
+    <div class="row forms-row">
+        <!-- תבנית מקורית -->
+        <div class="col-md-6 mb-3">
+            <form id="oldCake">
+                <div class="card-section">
+                    <h2>תבנית מקורית</h2>
 
-<div>
+                    <div class="forma-types">
+                        <label>
+                            <input type="radio" id="round" name="formaType" value="circle" onclick="changeForma('circle')">
+                            תבנית עגולה
+                        </label>
+                        <label>
+                            <input type="radio" id="rectangle" name="formaType" value="rectangle" onclick="changeForma('rectangle')">
+                            תבנית מלבנית
+                        </label>
+                        <label>
+                            <input type="radio" id="square" name="formaType" value="square" onclick="changeForma('square')">
+                            תבנית מרובעת
+                        </label>
+                    </div>
 
-    <div class="form_inputs row">
+                    <div class="form_inputs row">
+                        <div class="input_elem circle col-6">
+                            <div class="form-group-custom">
+                                <label for="diameter">קוטר תבנית (ס"מ)</label>
+                                <input type="number" id="diameter" name="diameter"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 24">
+                            </div>
+                        </div>
 
-        <div class="new_input_elem circle col-xs-3">
-            <label for="newDiameter">קוטר תבנית:</label>
-            <input  type="number" id="newDiameter" name="newDiameter" placeholder="לדוגמא: 18"><br><br>
-        </div>
-        <div class="new_input_elem rectangle col-xs-3">
-            <label for="newLength">אורך צלע:</label>
-            <input  type="number" id="newLength" name="newLength" placeholder="לדוגמא: 8"><br><br>
-        </div>
-        <div class="new_input_elem rectangle col-xs-3">
-            <label for="newWidth">רוחב צלע:</label>
-            <input  type="number" id="newWidth" name="newWidth" placeholder="לדוגמא: 4"><br><br>
-        </div>
-        <div class="new_input_elem square col-xs-3">
-            <label  for="newSquare_edge">צלע ריבוע:</label>
-            <input  type="number" id="newSquare_edge" name="newSquare_edge"
-                   placeholder="לדוגמא 15"><br><br>
-        </div>
-        <div class="col-xs-3">
-        <label for="newHeight">גובה :</label>
-        <input  type="number" id="newHeight" name="newHeight" placeholder="לדוגמא: 3"><br><br>
-        </div>
-        <div class="col-xs-3">
-            <label for="newAmount">מספר תבניות:</label>
-        <input  type="number" id="newAmount" name="newAmount" placeholder="לדוגמא: 2"><br><br>
-        </div>
-        </div>
-    <button id="cakeMe" class="btn btn-primary">חשב</button>
-    <button class="add-button">Add to home screen</button>
-    <div id="ratio">
+                        <div class="input_elem rectangle col-6">
+                            <div class="form-group-custom">
+                                <label for="length">אורך צלע (ס"מ)</label>
+                                <input type="number" id="length" name="length"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 20">
+                            </div>
+                        </div>
 
+                        <div class="input_elem rectangle col-6">
+                            <div class="form-group-custom">
+                                <label for="width">רוחב צלע (ס"מ)</label>
+                                <input type="number" id="width" name="width"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 10">
+                            </div>
+                        </div>
+
+                        <div class="input_elem square col-6">
+                            <div class="form-group-custom">
+                                <label for="square_edge">צלע ריבוע (ס"מ)</label>
+                                <input type="number" id="square_edge" name="square_edge"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 20">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group-custom">
+                                <label for="height">גובה התערובת בתבנית (ס"מ)</label>
+                                <input type="number" id="height" name="height"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 5">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group-custom">
+                                <label for="amount">מספר תבניות</label>
+                                <input type="number" id="amount" name="amount"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- תבנית חדשה -->
+        <div class="col-md-6 mb-3">
+            <form id="newCake">
+                <div class="card-section">
+                    <h2>תבנית חדשה</h2>
+
+                    <div class="forma-types">
+                        <label>
+                            <input type="radio" id="newRound" name="newFormaType" value="circle" onclick="newChangeForma('circle')">
+                            תבנית עגולה
+                        </label>
+                        <label>
+                            <input type="radio" id="newRectangle" name="newFormaType" value="rectangle" onclick="newChangeForma('rectangle')">
+                            תבנית מלבנית
+                        </label>
+                        <label>
+                            <input type="radio" id="newSquare" name="newFormaType" value="square" onclick="newChangeForma('square')">
+                            תבנית מרובעת
+                        </label>
+                    </div>
+
+                    <div class="form_inputs row">
+                        <div class="new_input_elem circle col-6">
+                            <div class="form-group-custom">
+                                <label for="newDiameter">קוטר תבנית (ס"מ)</label>
+                                <input type="number" id="newDiameter" name="newDiameter"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 18">
+                            </div>
+                        </div>
+
+                        <div class="new_input_elem rectangle col-6">
+                            <div class="form-group-custom">
+                                <label for="newLength">אורך צלע (ס"מ)</label>
+                                <input type="number" id="newLength" name="newLength"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 25">
+                            </div>
+                        </div>
+
+                        <div class="new_input_elem rectangle col-6">
+                            <div class="form-group-custom">
+                                <label for="newWidth">רוחב צלע (ס"מ)</label>
+                                <input type="number" id="newWidth" name="newWidth"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 12">
+                            </div>
+                        </div>
+
+                        <div class="new_input_elem square col-6">
+                            <div class="form-group-custom">
+                                <label for="newSquare_edge">צלע ריבוע (ס"מ)</label>
+                                <input type="number" id="newSquare_edge" name="newSquare_edge"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 15">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group-custom">
+                                <label for="newHeight">גובה התערובת בתבנית (ס"מ)</label>
+                                <input type="number" id="newHeight" name="newHeight"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 3">
+                            </div>
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-group-custom">
+                                <label for="newAmount">מספר תבניות</label>
+                                <input type="number" id="newAmount" name="newAmount"
+                                       class="form-control-custom"
+                                       placeholder="לדוגמה: 2">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions-row">
+                        <button id="cakeMe" class="btn btn-primary">חשב</button>
+                        <button class="add-button" type="button">הוספה למסך הבית</button>
+                    </div>
+
+                    <div id="ratio"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="social-row">
+        <div class="social-icons">
+            <a href="https://twitter.com/Doron_g?ref_src=twsrc%5Etfw"
+               class="twitter-follow-button"
+               data-show-count="false">
+                Follow @Doron_g
+            </a>
+            <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+            <a href="https://www.instagram.com/doron_g_/" target="_blank">
+                <img src="img/inst32.png" alt="Instagram">
+            </a>
+        </div>
+        <div class="brand-signature">
+            <span>Doron_g</span> &copy;
+        </div>
     </div>
 </div>
-    </form>
-<br><br>
-<a href="https://twitter.com/Doron_g?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @Doron_g</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<br><br>
-<a href="https://www.instagram.com/doron_g_/" target="_blank">
-<img src="img/inst32.png" >
-</a>
-<p>Doron_g&copy;</p>
+
 <script src="js/cakes.js"></script>
 <script src="index.js"></script>
-
 </body>
 </html>
